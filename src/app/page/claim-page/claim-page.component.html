@@ -56,9 +56,26 @@
     </div>
   </div>
 </div> -->
-<input [(ngModel)]="searchText" placeholder="search text goes here">
+<input [(ngModel)]="searchText" placeholder="search text goes here" />
 <div id="accordion">
   <div class="card">
+    <div class="dropdown">
+      <button
+        class="btn btn-secondary dropdown-toggle"
+        type="button"
+        id="dropdownMenuButton"
+        data-toggle="dropdown"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        New Claim
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <a class="dropdown-item" (click)="formClickHandler('expenceClaim')"
+          >Expence-claim Form</a
+        >
+      </div>
+    </div>
     <div class="card-header" id="headingOne">
       <h5 class="mb-0">
         <button
@@ -71,14 +88,6 @@
           My Claims
         </button>
       </h5>
-    </div>
-    <div class="dropdown">
-      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        Dropdown button
-      </button>
-      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <a class="dropdown-item" (click)="formClickHandler('expenceClaim')">Expence-claim Form</a>
-      </div>
     </div>
     <div
       id="collapseOne"
@@ -119,7 +128,7 @@
       <div class="card-body">
         <app-table
           [columns]="filterColumn()"
-          [claims]="filterClaim('allClaims') | filterClaim : searchText"
+          [claims]="filterClaim('allClaims') | filterClaim: searchText"
           [openClaim]="openClaim"
         ></app-table>
       </div>
