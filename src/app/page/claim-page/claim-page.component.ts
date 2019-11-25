@@ -25,6 +25,9 @@ export class ClaimPageComponent implements OnInit {
   openClaim() {
     this.router.navigate(["/claim"]);
   }
+  routeHandler(extension){
+    this.router.navigate([`/${extension}`]);
+  }
 
   constructor(public router: Router) {}
 
