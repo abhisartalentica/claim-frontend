@@ -1,6 +1,5 @@
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
-import { EditableTableModule } from 'ng-editable-table/editable-table/editable-table.module';
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
@@ -20,7 +19,7 @@ import { FilterClaimPipe } from './filter-claim.pipe';
 import { SearchComponent } from './components/search/search.component';
 @NgModule({
   declarations: [AppComponent, LoginComponent, ClaimPageComponent, NavBarComponent, OverviewComponent, ToggleButtonComponent, TableComponent, SectionComponent, SectionGroupComponent, SectionHeaderComponent, SectionContentComponent, FilterClaimPipe, SearchComponent, ExpenceClaimComponent],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule, EditableTableModule],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
   providers: [],
   bootstrap: [AppComponent]
 })

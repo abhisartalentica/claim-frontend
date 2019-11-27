@@ -1,5 +1,4 @@
 import { Component, OnInit } from "@angular/core";
-import { EditableTableService } from "ng-editable-table/editable-table/editable-table.service";
 
 @Component({
   selector: "expence-claim",
@@ -11,11 +10,10 @@ export class ExpenceClaimComponent implements OnInit {
   tableRowsWithId = [[1, "Example", "Example", true]];
   dataType = ["string", "string", "boolean"];
 
-  constructor(private service: EditableTableService) {
-    // console.log(10000);
+  constructor() {
+    console.log(10000);
   }
 
   ngOnInit() {
-    this.service.createTableWithIds(this.tableHeaders, this.tableRowsWithId, this.dataType);
   }
 }
