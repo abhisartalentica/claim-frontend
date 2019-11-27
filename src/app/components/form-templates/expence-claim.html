@@ -1,187 +1,102 @@
-<div class="container">
+<div class="container" id="content">
+  <div class="row justify-content-md-center font-weight-bold">
+    TALENTICA SOFTWARE (INDIA) PVT. LTD
+  </div>
+  <div class="row justify-content-md-center font-weight-bold">
+    Expense Claim Form
+  </div>
+  <div class="row justify-content-md-right font-weight-bold">
+    <button class="btn btn-outline-primary" (click)="downloadPDF()">
+      Export To PDF
+    </button>
+  </div>
+  <br />
   <form>
     <div class="form-group row">
       <label for="inputEmail3" class="col-sm-2 col-form-label">Date</label>
-      <div class="col-sm-10">
-        <input
-          type="email"
-          class="form-control"
-          id="inputEmail3"
-          placeholder="Email"
-        />
+      <div class="col-sm-4">
+        <input type="date" class="form-control" />
       </div>
     </div>
     <div class="form-group row">
       <label for="inputPassword3" class="col-sm-2 col-form-label"
         >Name Of Employee</label
       >
-      <div class="col-sm-10">
+      <div class="col-sm-4">
         <input
-          type="password"
+          type="text"
           class="form-control"
           id="inputPassword3"
-          placeholder="Password"
+          placeholder="Name"
         />
       </div>
     </div>
-    <fieldset class="form-group">
-      <div class="row">
-        <legend class="col-form-label col-sm-2 pt-0">Employee Code</legend>
-        <div class="col-sm-10">
-          <div class="form-check">
-            <input
-              class="form-check-input"
-              type="radio"
-              name="gridRadios"
-              id="gridRadios1"
-              value="option1"
-              checked
-            />
-            <label class="form-check-label" for="gridRadios1">
-              First radio
-            </label>
-          </div>
-          <div class="form-check">
-            <input
-              class="form-check-input"
-              type="radio"
-              name="gridRadios"
-              id="gridRadios2"
-              value="option2"
-            />
-            <label class="form-check-label" for="gridRadios2">
-              Second radio
-            </label>
-          </div>
-          <div class="form-check disabled">
-            <input
-              class="form-check-input"
-              type="radio"
-              name="gridRadios"
-              id="gridRadios3"
-              value="option3"
-              disabled
-            />
-            <label class="form-check-label" for="gridRadios3">
-              Third disabled radio
-            </label>
-          </div>
-        </div>
-      </div>
-    </fieldset>
     <div class="form-group row">
-      <div class="col-sm-2">Checkbox</div>
-      <div class="col-sm-10">
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" id="gridCheck1" />
-          <label class="form-check-label" for="gridCheck1">
-            Example checkbox
-          </label>
+      <label for="inputPassword3" class="col-sm-2 col-form-label"
+        >Employee Code</label
+      >
+      <div class="col-sm-4">
+        <input
+          type="number"
+          class="form-control"
+          id="inputPassword3"
+          placeholder="Code"
+        />
+      </div>
+    </div>
+    <h5 class="font-weight-bold mt-4">SUMMARY</h5>
+    <div class="form-group row">
+      <div class="col-sm-7">
+        <table>
+          <tbody>
+            <tr>
+              <td class="border font-weight-bold pl-4 pr-4">Total Claim</td>
+              <td class="border font-weight-bold pl-4 pr-4">{{ getTotal() }}</td>
+            </tr>
+            <tr>
+              <td class="border pl-4 pr-4">Less Advance</td>
+              <td class="border pl-4 pr-4">0.00</td>
+            </tr>
+            <tr>
+              <td class="border font-weight-bold pl-4 pr-4">
+                Reimbursement/(Refund) due
+              </td>
+              <td class="border font-weight-bold pl-4 pr-4">0.00</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="col-sm-5 row">
+        <label for="inputEmail3" class="col-sm-6 col-form-label"
+          >Taken on date</label
+        >
+        <div class="col-sm-6">
+          <input type="date" class="form-control" />
         </div>
       </div>
     </div>
-    <div class="form-group row">
-      <div class="col-sm-10">
-        <button type="submit" class="btn btn-primary">Sign in</button>
+    <h5 class="font-weight-bold mt-4">DETAILS</h5>
+    <div class="mb-4">
+      All expenses claimed MUST have supporting documents. Include Credit Card
+      receipt for any expenses you have incurred using your credit card
+    </div>
+    <table-renderer
+      [header]="header"
+      [data]="data"
+      [total]="getTotal()"
+    ></table-renderer>
+    <div class="mt-4">
+      I hereby certify that all expenditures incurred are related to company
+      business, and that I have personally paid for all expenditures.
+    </div>
+    <div class="form-group row mt-4">
+      <div class="col-sm-6 mt-4">
+        Claimant
+      </div>
+      <div class="col-sm-6">
+        <div for="ddd" class="font-weight-bold">Approved</div>
+        <div for="dd" class="">Authorized Signatory</div>
       </div>
     </div>
-    <h1>Advance example</h1>
-    <table>
-      <thead>
-        <tr>
-          <th *ngFor="let title of service.tableHeadersObjects">
-            {{ title.content }}
-          </th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let row of service.tableRowsObjects">
-          <td *ngFor="let cell of row.cells">
-            <span
-              *ngIf="
-                service.isEditing.indexOf(row) === -1 &&
-                service.checkTypeOf(cell.content) !== 'boolean'
-              "
-              >{{ cell.content }}</span
-            >
-            <span
-              *ngIf="
-                service.isEditing.indexOf(row) === -1 &&
-                service.checkTypeOf(cell.content) == 'boolean'
-              "
-            >
-              {{ cell.content ? "Activo" : "Inactivo" }}
-            </span>
-            <div
-              class="ui input"
-              *ngIf="
-                !(service.isEditing.indexOf(row) == -1) &&
-                service.checkTypeOf(cell.content) !== 'boolean'
-              "
-            >
-              <input
-                type="text"
-                [(ngModel)]="cell.content"
-                [name]="cell.content"
-              />
-            </div>
-            <div
-              *ngIf="
-                !(service.isEditing.indexOf(row) == -1) &&
-                service.checkTypeOf(cell.content) === 'boolean'
-              "
-              class="field checkboxContainer"
-            >
-              <div class="ui toggle checkbox">
-                <input
-                  type="checkbox"
-                  name="public"
-                  [(ngModel)]="cell.content"
-                  name="active"
-                />
-                <label>{{ cell.content ? "Activo" : "Inactivo" }}</label>
-              </div>
-            </div>
-          </td>
-          <td>
-            <button
-              *ngIf="service.isEditing.indexOf(row) === -1"
-              (click)="service.editRow(row)"
-            >
-              <i class="fa fa-pencil-square-o"></i>
-            </button>
-            <button
-              *ngIf="!(service.isEditing.indexOf(row) == -1)"
-              (click)="service.saveRow(row)"
-            >
-              <i class="fa fa-check"></i>
-            </button>
-            <button
-              *ngIf="service.isEditing.indexOf(row) === -1"
-              (click)="service.deleteRow(row)"
-            >
-              <i class="fa fa-times"></i>
-            </button>
-            <button
-              *ngIf="!(service.isEditing.indexOf(row) == -1)"
-              (click)="service.cancelEdition(row)"
-            >
-              <i class="fa fa-times"></i>
-            </button>
-          </td>
-        </tr>
-      </tbody>
-      <tfoot>
-        <tr>
-          <th *ngFor="let title of service.tableHeadersObjects"></th>
-          <th>
-            <button (click)="service.addRow()">
-              <i class="fa fa-plus"></i>
-            </button>
-          </th>
-        </tr>
-      </tfoot>
-    </table>
   </form>
 </div>
