@@ -27,16 +27,6 @@ export class TableRenderer implements OnInit {
     this.data.push(newRow);
   }
 
-  // getTotal = () => {
-  //   type claim = {
-  //     value: any;
-  //     type: string;
-  //   };
-  //   return this.data.reduce(
-  //   (acc: number, item: Array<claim>) => parseInt(item[3].value) + acc,
-  //   0
-  // )}
-
   ngOnInit() {
   }
 }

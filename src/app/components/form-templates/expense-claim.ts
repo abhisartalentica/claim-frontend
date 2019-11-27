@@ -113,7 +113,7 @@ export class ExpenceClaimComponent implements OnInit {
       var pdf = new jsPDF("p", "pt", [canvas.width+1300, canvas.height]);
         console.log(canvas.width)
       var imgData = canvas.toDataURL("image/jpeg", 1.0);
-      pdf.addImage(imgData, 0, 0, canvas.width, canvas.height);
+      pdf.addImage(imgData, 0, 0, canvas.width-150, canvas.height);
       pdf.save("converteddoc.pdf");
     });
   }
@@ -127,8 +127,5 @@ export class ExpenceClaimComponent implements OnInit {
     0
   )}
 
-  ngOnInit() {
-    // @ViewChild("#content", { static: false }) content: ElementRef;
-    setTimeout(() => console.log(this.data), 5000);
-  }
+  ngOnInit() {}
 }
