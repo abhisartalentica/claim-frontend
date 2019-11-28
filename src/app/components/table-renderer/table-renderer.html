@@ -1,0 +1,42 @@
+<div class="container">
+  <table class="table" *ngIf="data.length">
+    <thead class="thead-light">
+      <tr>
+        <th
+          class="font-weight-bold"
+          scope="col"
+          *ngFor="let item of header; let i = index"
+        >
+          {{ item }}
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of data; let i = index">
+        <td scope="row" *ngFor="let ix of item; let j = index">
+          <input
+            type="{{ ix.type }}"
+            [(ngModel)]="ix.value"
+            *ngIf="checkIfValidInput(ix.type)"
+          />
+          <select *ngIf="!checkIfValidInput(ix.type)">
+            <option>yes</option>
+            <option>no</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>Total</td>
+        <td>{{ total }}</td>
+        <td></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="row">
+    <button class="btn btn-outline-primary ml-4 mb-4" (click)="addRow()">
+      Add row
+    </button>
+  </div>
+</div>
