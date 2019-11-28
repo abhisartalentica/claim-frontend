@@ -57,7 +57,7 @@
   </div>
 </div> -->
 <input [(ngModel)]="searchText" placeholder="search text goes here" />
-<div id="accordion">
+<div id="accordion" (click)="closeAside($event)">
   <div class="card">
     <div class="dropdown">
       <button
@@ -72,10 +72,20 @@
       </button>
       <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
         <a class="dropdown-item" (click)="formClickHandler('expenceClaim')"
-          >Expence-claim Form</a
+          >Expence Claim Form</a
+        >
+        <a class="dropdown-item" (click)="formClickHandler('domesticClaim')"
+          >Domestic Travel Form</a
+        >
+        <a class="dropdown-item" (click)="formClickHandler('foreignClaim')"
+          >Foreign Travel Form</a
+        >
+        <a class="dropdown-item" (click)="formClickHandler('localConveyanceClaim')"
+          >Local Conveyance Form</a
         >
       </div>
     </div>
+    <button type="button" (click)="openAside($event)" class="btn btn-primary">Team Management</button>
     <div class="card-header" id="headingOne">
       <h5 class="mb-0">
         <button
@@ -135,3 +145,4 @@
     </div>
   </div>
 </div>
+<div class="aside" *ngIf="asideVisible">some changes</div>

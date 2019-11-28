@@ -3,15 +3,13 @@ import * as jsPDF from "jspdf";
 import html2canvas from "html2canvas";
 
 @Component({
-  selector: "expence-claim",
-  templateUrl: "./expence-claim.html",
-  styleUrls: ["../../app.component.css"],
+  selector: "local-conveyance-claim",
+  templateUrl: "./local-conveyance-claim.component.html",
+  styleUrls: ["../../../app.component.css"],
 })
-export class ExpenceClaimComponent implements OnInit {
+export class LocalConveyanceClaimComponent implements OnInit {
   @ViewChild("#content", { static: false }) content: ElementRef;
 
-  tableHeaders = ["Header 1", "Header 2", "Header 3"];
-  tableRowsWithId = [[1, "Example", "Example", true]];
   dataType = ["string", "string", "boolean"];
   header = ["Date", "Particular", "Amount", "Supporting", "Paid"];
   data = [
@@ -104,16 +102,14 @@ export class ExpenceClaimComponent implements OnInit {
       },
     ],
   ];
-  constructor() {
-    console.log(10000);
-  }
+  constructor() {}
 
   downloadPDF() {
     html2canvas(document.querySelector("#content")).then(canvas => {
-      var pdf = new jsPDF("p", "pt", [canvas.width+1300, canvas.height]);
-        console.log(canvas.width)
+      var pdf = new jsPDF("p", "pt", [canvas.width, canvas.height]);
+      console.log(canvas.width);
       var imgData = canvas.toDataURL("image/jpeg", 1.0);
-      pdf.addImage(imgData, 0, 0, canvas.width-150, canvas.height);
+      pdf.addImage(imgData, 0, 0, canvas.width-200, canvas.height);
       pdf.save("converteddoc.pdf");
     });
   }
@@ -123,9 +119,10 @@ export class ExpenceClaimComponent implements OnInit {
       type: string;
     };
     return this.data.reduce(
-    (acc: number, item: Array<claim>) => parseInt(item[3].value) + acc,
-    0
-  )}
+      (acc: number, item: Array<claim>) => parseInt(item[3].value) + acc,
+      0
+    );
+  };
 
   ngOnInit() {}
 }
