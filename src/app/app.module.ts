@@ -5,23 +5,46 @@ import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { LoginComponent } from "./page/login/login.component";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { ClaimPageComponent } from './page/claim-page/claim-page.component';
-import { NavBarComponent } from './components/nav-bar/nav-bar.component';
-import { OverviewComponent } from './page/overview/overview.component';
-import { ToggleButtonComponent } from './components/toggle-button/toggle-button.component';
-import { TableComponent } from './components/table/table.component';
-import { ExpenceClaimComponent } from './components/form-templates/expense-claim';
-import {TableRenderer} from "./components/table-renderer/table-renderer"
-import { SectionComponent } from './components/section/section.component';
-import { SectionGroupComponent } from './components/section/section-group/section-group.component';
-import { SectionHeaderComponent } from './components/section/section-header/section-header.component';
-import { SectionContentComponent } from './components/section/section-content/section-content.component';
-import { FilterClaimPipe } from './filter-claim.pipe';
-import { SearchComponent } from './components/search/search.component';
+import { ClaimPageComponent } from "./page/claim-page/claim-page.component";
+import { NavBarComponent } from "./components/nav-bar/nav-bar.component";
+import { OverviewComponent } from "./page/overview/overview.component";
+import { ToggleButtonComponent } from "./components/toggle-button/toggle-button.component";
+import { TableComponent } from "./components/table/table.component";
+import { ExpenceClaimComponent } from "./components/form-templates/expense-claim/expense-claim.component";
+import { DomesticClaimComponent } from "./components/form-templates/domestic-claim/domestic-claim.component";
+import { ForeignClaimComponent } from "./components/form-templates/foreign-claim/foreign-claim.component";
+import { LocalConveyanceClaimComponent } from "./components/form-templates/local-conveyance-claim/local-conveyance-claim.component";
+import { TableRenderer } from "./components/table-renderer/table-renderer";
+import { SectionComponent } from "./components/section/section.component";
+import { SectionGroupComponent } from "./components/section/section-group/section-group.component";
+import { SectionHeaderComponent } from "./components/section/section-header/section-header.component";
+import { SectionContentComponent } from "./components/section/section-content/section-content.component";
+import { FilterClaimPipe } from "./filter-claim.pipe";
+import { SearchComponent } from "./components/search/search.component";
+
 @NgModule({
-  declarations: [AppComponent, LoginComponent, ClaimPageComponent, NavBarComponent, OverviewComponent, ToggleButtonComponent, TableComponent, SectionComponent, SectionGroupComponent, SectionHeaderComponent, SectionContentComponent, FilterClaimPipe, SearchComponent, ExpenceClaimComponent, TableRenderer],
+  declarations: [
+    AppComponent,
+    LoginComponent,
+    ClaimPageComponent,
+    NavBarComponent,
+    OverviewComponent,
+    ToggleButtonComponent,
+    TableComponent,
+    SectionComponent,
+    SectionGroupComponent,
+    SectionHeaderComponent,
+    SectionContentComponent,
+    FilterClaimPipe,
+    SearchComponent,
+    ExpenceClaimComponent,
+    TableRenderer,
+    DomesticClaimComponent,
+    ForeignClaimComponent,
+    LocalConveyanceClaimComponent,
+  ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -1,3 +1,11 @@
 #accordion {
   margin: 8px;
 }
+.aside{
+  position: fixed;
+  height: 100%;
+  width: 50vw;
+  left: 0;
+  top: 0;
+  background: white;
+}

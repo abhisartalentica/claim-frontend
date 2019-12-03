@@ -1,0 +1,181 @@
+<div class="container" id="content">
+  <div class="row justify-content-md-center font-weight-bold">
+    TALENTICA SOFTWARE (INDIA) PVT. LTD
+  </div>
+  <div class="row justify-content-md-center font-weight-bold">
+    Domestic Travel Expense Claim Form
+  </div>
+  <div class="row justify-content-md-right font-weight-bold">
+    <button class="btn btn-outline-primary" (click)="downloadPDF()">
+      Export To PDF
+    </button>
+  </div>
+  <br />
+  <form>
+    <div class="form-group row">
+      <label for="inputPassword3" class="col-sm-2 col-form-label"
+        >Name Of Employee</label
+      >
+      <div class="col-sm-4">
+        <input
+          type="text"
+          class="form-control"
+          id="inputPassword3"
+          placeholder="Name"
+        />
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="inputPassword3" class="col-sm-2 col-form-label"
+        >Purpose of Trip</label
+      >
+      <div class="col-sm-4">
+        <input
+          type="text"
+          class="form-control"
+          id="inputPassword3"
+          placeholder="Purpose of Trip"
+        />
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="inputEmail3" class="col-sm-2 col-form-label">Dates</label>
+      <div class="col-sm-4">
+        Leave
+        <input type="date" class="form-control" />
+      </div>
+      <div class="col-sm-4">
+        Return
+        <input type="date" class="form-control" />
+      </div>
+    </div>
+    <h5 class="font-weight-bold mt-4">SUMMARY</h5>
+    <div class="form-group row">
+      <div class="col-sm-7">
+        <table>
+          <tbody>
+            <tr>
+              <td class="border font-weight-bold pl-4 pr-4">
+                Intercity Travel
+              </td>
+              <td class="border font-weight-bold pl-4 pr-4">
+                {{ getTotal(dataInterCityTravels, 4) }}
+              </td>
+            </tr>
+            <tr>
+              <td class="border pl-4 pr-4">Hotels</td>
+              <td class="border pl-4 pr-4">{{ getTotal(dataHotels, 4) }}</td>
+            </tr>
+            <tr>
+              <td class="border pl-4 pr-4">Meals</td>
+              <td class="border pl-4 pr-4">{{ getTotal(dataMeals, 2) }}</td>
+            </tr>
+            <tr>
+              <td class="border pl-4 pr-4">Local Travel</td>
+              <td class="border pl-4 pr-4">
+                {{ getTotal(dataLocalTravel, 5) }}
+              </td>
+            </tr>
+            <tr>
+              <td class="border pl-4 pr-4">Other Expenses</td>
+              <td class="border pl-4 pr-4">
+                {{ getTotal(dataOtherExpanse, 2) }}
+              </td>
+            </tr>
+            <tr>
+              <td class="border font-weight-bold pl-4 pr-4">Total Claim</td>
+              <td class="border pl-4 pr-4">
+                {{
+                  getTotal(dataInterCityTravels, 4) +
+                    getTotal(dataHotels, 4) +
+                    getTotal(dataMeals, 2) +
+                    getTotal(dataLocalTravel, 5) +
+                    getTotal(dataOtherExpanse, 2)
+                }}
+              </td>
+            </tr>
+            <tr>
+              <td class="border pl-4 pr-4">Less Advance</td>
+              <td class="border pl-4 pr-4">0.00</td>
+            </tr>
+            <tr>
+              <td class="border font-weight-bold pl-4 pr-4">
+                Reimbursement/(Refund) due
+              </td>
+              <td class="border font-weight-bold pl-4 pr-4">0.00</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div>CCC = Charge on Company Credit Card</div>
+    <h5 class="font-weight-bold mt-4">INTER-CITY TRAVEL</h5>
+    <div class="mb-4">
+      Attach bus/rail/airline tickets, even if the company has paid for them.
+      For e-tickets, attach boarding passes. For e-tickets booked by you,
+      include booking confirmation email in addition to the boarding passes as
+      proof of payment.
+    </div>
+    <table-renderer
+      [header]="headerInterCityTravels"
+      [data]="dataInterCityTravels"
+      [total]="getTotal(dataInterCityTravels, 4)"
+    ></table-renderer>
+    <h5 class="font-weight-bold mt-4">HOTELS</h5>
+    <div class="mb-4">
+      Attach Hotel bills even if they are paid directly by the company. For
+      bills paid directly by the company, enter "0" in the Amount column. Claims
+      for Room Service, Laundry, etc are not allowed. Include Credit Card
+      reciept if you have paid with your credit card.
+    </div>
+    <table-renderer
+      [header]="headerHotels"
+      [data]="dataHotels"
+      [total]="getTotal(dataHotels, 4)"
+    ></table-renderer>
+    <h5 class="font-weight-bold mt-4">MEALS</h5>
+    <div class="mb-4">
+      Supporting documents required if you are claiming as per actuals. For a
+      trip, you have to claim either per diem for all the days, or at actuals
+      for all the days. Business meals, if any, should be claimed in the Other
+      Expenses section. As per the prevailing policy, the per diem allowed is
+      Rs. 100 for breakfast, Rs. 150 for lunch and dinner.
+    </div>
+    <table-renderer
+      [header]="headerMeals"
+      [data]="dataMeals"
+      [total]="getTotal(dataMeals, 2)"
+    ></table-renderer>
+    <h5 class="font-weight-bold mt-4">LOCAL TRAVEL</h5>
+    <div class="mb-4">
+      Do not include inter-city travel in this table.
+    </div>
+    <table-renderer
+      [header]="headerLocalTravel"
+      [data]="dataLocalTravel"
+      [total]="getTotal(dataLocalTravel, 5)"
+    ></table-renderer>
+    <h5 class="font-weight-bold mt-4">OTHER EXPANSES</h5>
+    <div class="mb-4">
+      -------------------
+    </div>
+    <table-renderer
+      [header]="headerOtherExpanse"
+      [data]="dataOtherExpanse"
+      [total]="getTotal(dataOtherExpanse, 2)"
+    ></table-renderer>
+    <div class="mt-4">
+      I hereby certify that all expenditures incurred are related to company
+      business, and that I have personally paid for all expenditures.
+    </div>
+    <div class="form-group row mt-4">
+      <div class="col-sm-6 mt-4">
+        Claimant
+      </div>
+      <div class="col-sm-6">
+        <div for="ddd" class="font-weight-bold">Approved</div>
+        <div for="dd" class="">Authorized Signatory</div>
+      </div>
+    </div>
+  </form>
+</div>

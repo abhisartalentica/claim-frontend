@@ -5,12 +5,12 @@ import { Router } from "@angular/router";
 @Component({
   selector: "app-claim-page",
   templateUrl: "./claim-page.component.html",
-  styleUrls: ["./claim-page.component.css"]
+  styleUrls: ["./claim-page.component.css"],
 })
 export class ClaimPageComponent implements OnInit {
   allClaims: Array<Object> = allClaimsJSON ? allClaimsJSON.module : [];
   searchText: string;
-
+  asideVisible = false;
   filterClaim(claimType) {
     if (claimType == "allClaims") {
       return this.allClaims && this.allClaims;
@@ -25,8 +25,18 @@ export class ClaimPageComponent implements OnInit {
   openClaim() {
     this.router.navigate(["/claim"]);
   }
-  formClickHandler(extension){
+  formClickHandler(extension) {
     this.router.navigate([`/${extension}`]);
+  }
+  openAside(e) {
+    e.stopPropagation();
+    e.preventDefault();
+    this.asideVisible = true;
+  }
+  closeAside(e){
+    e.stopPropagation();
+    e.preventDefault();
+    this.asideVisible = false;
   }
 
   constructor(public router: Router) {}
