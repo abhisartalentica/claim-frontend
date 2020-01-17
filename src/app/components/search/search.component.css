@@ -1,5 +1,9 @@
-.search{
-  border:none;
-  border-radius:3px;
-  min-height:30px;
+.search {
+  border-radius: 5px;
+  min-height: 30px;
+  padding: 8px;
+  width: 500px;
+  border: 1px solid #dbdbdb;
+  margin: 10px;
+  margin-left:30%;
 }

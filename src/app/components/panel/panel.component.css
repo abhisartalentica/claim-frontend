@@ -1,0 +1,31 @@
+.panelColumn {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+.panelBody {
+  width: 750px;
+  border: 1px solid #cdd9e2;
+  height: 500px;
+  display: flex;
+}
+.panelCell {
+  border-top: 1px solid #cdd9e2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 20px;
+  width: 100%;
+  flex: 1;
+}
+.panelHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 6px 6px 0 0;
+  padding: 13px;
+  border: 1px solid #cdd9e2;
+}
+.panelComponent {
+  width: 750px;
+}

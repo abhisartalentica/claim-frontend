@@ -1,0 +1,14 @@
+<div>
+  <div *ngIf="claimType === 'expenceClaim'">
+    <expense-claim></expense-claim>
+  </div>
+  <div *ngIf="claimType === 'domesticClaim'">
+    <domestic-claim></domestic-claim>
+  </div>
+  <div *ngIf="claimType === 'foreignClaim'">
+    <foreign-claim></foreign-claim>
+  </div>
+  <div *ngIf="claimType === 'localConveyanceClaim'">
+    <local-conveyance-claim></local-conveyance-claim>
+  </div>
+</div>

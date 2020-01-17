@@ -1,5 +1,5 @@
 <div class="container-fluid">
-  <table class="table" *ngIf="data.length">
+  <table class="table" *ngIf="data && data.length">
     <thead class="thead-light">
       <tr>
         <th
@@ -18,6 +18,7 @@
             type="{{ ix.type }}"
             [(ngModel)]="ix.value"
             *ngIf="checkIfValidInput(ix.type)"
+           
           />
           <select *ngIf="!checkIfValidInput(ix.type)">
             <option>yes</option>

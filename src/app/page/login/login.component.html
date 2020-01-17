@@ -1,35 +1,66 @@
 <div class="container fadeInDown">
+  <ul class="tab-group">
+    <li class="tab" [ngClass]="{ active: routeParams == '/login' }">
+      <a (click)="loginHandler('login')">Log In</a>
+    </li>
+    <li class="tab" [ngClass]="{ active: routeParams == '/signUp' }">
+      <a (click)="loginHandler('signUp')">Sign Up</a>
+    </li>
+  </ul>
   <div id="formContent">
-    <!-- Tabs Titles -->
-    <h2 class="active">Sign In</h2>
-    <!-- <h2 class="inactive underlineHover">Sign Up</h2> -->
+    <!-- <div style="display:flex">
 
+      <h2 class="active" >Sign In</h2>
+      <h2>|</h2>
+      <h2 class="active" >Sign Up</h2>
+
+    </div> -->
     <!-- Icon -->
+    <div *ngIf="routeParams === '/signUp'">
+      <app-sign-up></app-sign-up>
+    </div>
+    <div *ngIf="routeParams === '/login'">
+      <!-- Login Form -->
+      <form
+        [formGroup]="loginForm"
+        (ngSubmit)="logIn(loginForm)"
+        class="login-form"
+      >
+        <input
+          type="text"
+          id="login"
+          name="login"
+          placeholder="login"
+          formControlName="userName"
 
-    <!-- Login Form -->
-    <form [formGroup]="loginForm" (ngSubmit)="logIn(loginForm)">
-      <input
-        type="text"
-        id="login"
-        name="login"
-        placeholder="login"
-        formControlName="userName"
-      />
-      <!-- {{ userName.value }} -->
-      <input
-        type="password"
-        id="password"
-        name="login"
-        placeholder="password"
-        formControlName="password"
-      />
-      <!-- {{ password.value }} -->
-      <button type="submit">Log In</button>
-    </form>
+        />
+        <!-- {{ userName.value }} -->
+        <input
+          type="password"
+          id="password"
+          name="login"
+          placeholder="password"
+          formControlName="password"
+        />
+        <!-- {{ password.value }} -->
+        <div class="submit-button">
+          <button type="submit">
+            <div
+              *ngIf="loading"
+              class="spinner-border text-light"
+              role="status"
+            >
+              <span class="sr-only">Loading...</span>
+            </div>
+            <div *ngIf="!loading">Log In</div>
+          </button>
+        </div>
+      </form>
 
-    <!-- Remind Passowrd -->
-    <div id="formFooter">
-      <a class="underlineHover" href="#">Forgot Password?</a>
+      <!-- Remind Passowrd -->
+      <div id="formFooter">
+        <a class="underlineHover" href="#">Forgot Password?</a>
+      </div>
     </div>
   </div>
 </div>

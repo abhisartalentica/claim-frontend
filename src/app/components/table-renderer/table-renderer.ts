@@ -9,6 +9,7 @@ export class TableRenderer implements OnInit {
   @Input("header") header: Array<string> = [];
   @Input("data") data: Array<Array<Object>> = [];
   @Input("total") total: number = 0;
+  @Input("inputType") inputType: string = "Table"
   checkIfValidInput = type => ["number", "text", "date"].includes(type);
 
   constructor() {}

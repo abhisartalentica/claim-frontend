@@ -1,0 +1,36 @@
+<div class="autocomplete">
+  <div
+    class="chips-input-container"
+    (click)="suggest()"
+    [(ngModel)]="userSelectsString"
+    name="suggestion"
+  >
+    <div class="user-chip" *ngFor="let user of userSelects">
+      {{ user.name }}
+      <span (click)="deleteSelects(user)" class="delete-icon-chip"
+        >&#10006;</span
+      >
+    </div>
+
+    <!-- <input
+      name="suggestion"
+      type="text"
+      placeholder="User"
+      (click)="suggest()"
+      [(ngModel)]="userSelectsString"
+      class="chips-input"
+    /> -->
+  </div>
+
+  <div class="autocomplete-items" *ngIf="show">
+    <div
+   class="menu"
+      *ngFor="let s of suggestions"
+      [ngClass]="isSelected(s) ? 'selected-suggestion' : ''"
+      (click)="selectSuggestion(s)"
+      clickOutside
+    >
+      {{ s.name }}
+    </div>
+  </div>
+</div>

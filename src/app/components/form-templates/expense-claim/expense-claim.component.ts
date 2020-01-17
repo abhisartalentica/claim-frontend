@@ -3,7 +3,7 @@ import * as jsPDF from "jspdf";
 import html2canvas from "html2canvas";
 
 @Component({
-  selector: "expence-claim",
+  selector: "expense-claim",
   templateUrl: "./expense-claim.component.html",
   styleUrls: ["../../../app.component.css"],
 })
