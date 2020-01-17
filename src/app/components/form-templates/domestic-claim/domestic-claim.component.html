@@ -11,7 +11,7 @@
     </button>
   </div>
   <br />
-  <form>
+  <form [formGroup]="domesticForm" (ngSubmit)="claimFormSubmit(loginForm)">
     <div class="form-group row">
       <label for="inputPassword3" class="col-sm-2 col-form-label"
         >Name Of Employee</label
@@ -22,6 +22,7 @@
           class="form-control"
           id="inputPassword3"
           placeholder="Name"
+          formControlName="employeeName"
         />
       </div>
     </div>
@@ -35,6 +36,7 @@
           class="form-control"
           id="inputPassword3"
           placeholder="Purpose of Trip"
+          formControlName="tripDetail"
         />
       </div>
     </div>
@@ -120,6 +122,7 @@
       [header]="headerInterCityTravels"
       [data]="dataInterCityTravels"
       [total]="getTotal(dataInterCityTravels, 4)"
+      [inputType]="InterCityTravels"
     ></table-renderer>
     <h5 class="font-weight-bold mt-4">HOTELS</h5>
     <div class="mb-4">
@@ -132,6 +135,7 @@
       [header]="headerHotels"
       [data]="dataHotels"
       [total]="getTotal(dataHotels, 4)"
+      [inputType]="Hotels"
     ></table-renderer>
     <h5 class="font-weight-bold mt-4">MEALS</h5>
     <div class="mb-4">
@@ -145,6 +149,7 @@
       [header]="headerMeals"
       [data]="dataMeals"
       [total]="getTotal(dataMeals, 2)"
+      [inputType]="Meals"
     ></table-renderer>
     <h5 class="font-weight-bold mt-4">LOCAL TRAVEL</h5>
     <div class="mb-4">
@@ -154,6 +159,7 @@
       [header]="headerLocalTravel"
       [data]="dataLocalTravel"
       [total]="getTotal(dataLocalTravel, 5)"
+      [inputType]="LocalTravel"
     ></table-renderer>
     <h5 class="font-weight-bold mt-4">OTHER EXPANSES</h5>
     <div class="mb-4">
@@ -163,6 +169,7 @@
       [header]="headerOtherExpanse"
       [data]="dataOtherExpanse"
       [total]="getTotal(dataOtherExpanse, 2)"
+      [inputType]="OtherExpanse"
     ></table-renderer>
     <div class="mt-4">
       I hereby certify that all expenditures incurred are related to company

@@ -1,0 +1,86 @@
+<div class="container fadeInDown">
+  <div id="formContent">
+    <form
+      [formGroup]="signUpForm"
+      (ngSubmit)="signUp(signUpForm)"
+      class="signup-form"
+    >
+      <input
+        type="text"
+        id="email"
+        name="email"
+        placeholder="email"
+        formControlName="email"
+        (keyup)="emailValidation()"
+        required
+        class="input-text"
+      />
+      <input
+        type="text"
+        id="name"
+        name="name"
+        placeholder="full name"
+        formControlName="name"
+        required
+        class="input-text"
+      />
+      <!-- {{ userName.value }} -->
+      <input
+        type="password"
+        id="password"
+        name="password"
+        placeholder="new password"
+        formControlName="password"
+        (keyup)="passwordValidation()"
+        required
+        class="input-text"
+      />
+      <!-- <input
+        type="password"
+        id="confirmPassword"
+        name="confirmPassword"
+        placeholder="confirm password"
+        formControlName="confirmPassword"
+        (keyup)="passwordValidation()"
+        required
+      /> -->
+      <!-- <input
+        type="text"
+        id="team"
+        name="team"
+        placeholder="team"
+        formControlName="team"
+        required
+        class="input-text"
+      /> -->
+      <!-- <select multiple data-style="bg-white rounded-pill px-4 py-3 shadow-sm " class="selectpicker w-100">
+            <option>United Kingdom</option>
+            <option>United States</option>
+            <option>France</option>
+            <option>Germany</option>
+            <option>Italy</option>
+        </select> -->
+      <ng-select [multiple]="true" name="team"
+      placeholder="team"
+      formControlName="team">
+        <ng-option
+          *ngFor="let team of teams$"
+          [value]="team.team"
+          >{{ team.team }}</ng-option
+        >
+      </ng-select>
+
+      <!-- <app-multi-select></app-multi-select> -->
+      <!-- {{ password.value }} -->
+      <button class="button-submit" type="submit">Sign Up</button>
+    </form>
+
+    <!-- Remind Passowrd -->
+  </div>
+</div>
+<!-- <ul>
+  <li *ngFor="let i of teams$[0] | async">
+    {{ i }}
+    {{ teams$["teams"] }}
+  </li>
+</ul> -->

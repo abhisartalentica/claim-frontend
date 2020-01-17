@@ -1,1 +1,6 @@
-<input class="search" [(ngModel)]="searchFilter"  placeHolder=" jhcbdhjbv"/>
+<input
+  class="search"
+  [(ngModel)]="searchFilter"
+  (keyup)="handleSearch()"
+  placeHolder="Search the claim.."
+/>

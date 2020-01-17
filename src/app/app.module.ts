@@ -21,6 +21,19 @@ import { SectionHeaderComponent } from "./components/section/section-header/sect
 import { SectionContentComponent } from "./components/section/section-content/section-content.component";
 import { FilterClaimPipe } from "./filter-claim.pipe";
 import { SearchComponent } from "./components/search/search.component";
+import { HttpClientModule } from "@angular/common/http";
+import { ClaimDetailComponent } from "./page/claim-detail/claim-detail.component";
+import { PanelComponent } from "./components/panel/panel.component";
+import { SignUpComponent } from "./page/login/sign-up/sign-up.component";
+import { StoreModule } from "@ngrx/store";
+import { UserReducer } from "./reducers/users.reducer";
+import { TeamReducer } from "./reducers/teams.reducer";
+import { ClaimReducer } from "./reducers/claims.reducer";
+import { CookieService } from "ngx-cookie-service";
+import { NgSelectModule } from "@ng-select/ng-select";
+import { MultiSelectComponent } from "./components/multi-select/multi-select.component";
+import { HighlightDirective } from "./util/dropdownMenu.directive";
+import { CreateClaimComponent } from './page/create-claim/create-claim.component';
 
 @NgModule({
   declarations: [
@@ -42,9 +55,27 @@ import { SearchComponent } from "./components/search/search.component";
     DomesticClaimComponent,
     ForeignClaimComponent,
     LocalConveyanceClaimComponent,
+    ClaimDetailComponent,
+    PanelComponent,
+    SignUpComponent,
+    MultiSelectComponent,
+    HighlightDirective,
+    CreateClaimComponent
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
-  providers: [],
-  bootstrap: [AppComponent],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    StoreModule.forRoot({
+      user: UserReducer,
+      teams: TeamReducer,
+      claims: ClaimReducer
+    }),
+    NgSelectModule
+  ],
+  providers: [CookieService],
+  bootstrap: [AppComponent]
 })
 export class AppModule {}

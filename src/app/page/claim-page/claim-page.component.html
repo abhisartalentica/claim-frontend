@@ -1,3 +1,5 @@
+<app-nav-bar></app-nav-bar>
+<div class="search-bar"><app-search></app-search></div>
 <!-- <div style="margin:8px" class="dropdown">
   <button
     class="btn btn-secondary dropdown-toggle"
@@ -56,36 +58,40 @@
     </div>
   </div>
 </div> -->
-<input [(ngModel)]="searchText" placeholder="search text goes here" />
-<div id="accordion" (click)="closeAside($event)">
+<!-- <input [(ngModel)]="searchText" placeholder="search text goes here" /> -->
+
+<div class="dropdown">
+  <button
+    class="btn btn-secondary dropdown-toggle"
+    type="button"
+    id="dropdownMenuButton"
+    data-toggle="dropdown"
+    aria-haspopup="true"
+    aria-expanded="false"
+  >
+    New Claim
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item" (click)="formClickHandler('expenceClaim')"
+      >Expence Claim Form</a
+    >
+    <a class="dropdown-item" (click)="formClickHandler('domesticClaim')"
+      >Domestic Travel Form</a
+    >
+    <a class="dropdown-item" (click)="formClickHandler('foreignClaim')"
+      >Foreign Travel Form</a
+    >
+    <a class="dropdown-item" (click)="formClickHandler('localConveyanceClaim')"
+      >Local Conveyance Form</a
+    >
+  </div>
+</div>
+<!-- <button type="button" (click)="openAside($event)" class="btn btn-primary">
+      Team Management
+    </button> -->
+
+<div id="accordion">
   <div class="card">
-    <div class="dropdown">
-      <button
-        class="btn btn-secondary dropdown-toggle"
-        type="button"
-        id="dropdownMenuButton"
-        data-toggle="dropdown"
-        aria-haspopup="true"
-        aria-expanded="false"
-      >
-        New Claim
-      </button>
-      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <a class="dropdown-item" (click)="formClickHandler('expenceClaim')"
-          >Expence Claim Form</a
-        >
-        <a class="dropdown-item" (click)="formClickHandler('domesticClaim')"
-          >Domestic Travel Form</a
-        >
-        <a class="dropdown-item" (click)="formClickHandler('foreignClaim')"
-          >Foreign Travel Form</a
-        >
-        <a class="dropdown-item" (click)="formClickHandler('localConveyanceClaim')"
-          >Local Conveyance Form</a
-        >
-      </div>
-    </div>
-    <button type="button" (click)="openAside($event)" class="btn btn-primary">Team Management</button>
     <div class="card-header" id="headingOne">
       <h5 class="mb-0">
         <button
@@ -108,7 +114,7 @@
       <div class="card-body">
         <app-table
           [columns]="filterColumn()"
-          [claims]="filterClaim('allClaims')"
+          [claims]="filterClaims"
         ></app-table>
       </div>
     </div>
@@ -138,11 +144,11 @@
       <div class="card-body">
         <app-table
           [columns]="filterColumn()"
-          [claims]="filterClaim('allClaims') | filterClaim: searchText"
+          [claims]="filterClaims"
           [openClaim]="openClaim"
         ></app-table>
       </div>
     </div>
   </div>
 </div>
-<div class="aside" *ngIf="asideVisible">some changes</div>
+<!-- <div class="aside" *ngIf="asideVisible">some changes</div> -->

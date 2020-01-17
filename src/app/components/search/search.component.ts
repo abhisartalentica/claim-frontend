@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from "@angular/core";
+import { DataService } from "../../services/data.service";
 
 @Component({
   selector: "app-search",
@@ -7,8 +8,12 @@ import { Component, OnInit, Input } from "@angular/core";
 })
 export class SearchComponent implements OnInit {
   @Input("searchText") searchString: string;
-  searchFilter: string;
-  constructor() {}
+  searchFilter: string = "";
 
+  constructor(private dataService: DataService) {}
+  handleSearch() {
+    console.log("search string added", this.searchFilter);
+    this.dataService.setFilterString(this.searchFilter);
+  }
   ngOnInit() {}
 }
